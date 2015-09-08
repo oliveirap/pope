@@ -2,9 +2,12 @@
 <html lang="PT-BR">
 <head>
 	<meta charset="UTF-8">
-	<title>Login POPE</title>
+	<meta name="description" content="Plataform Online For Problems and Exercices - Plataforma online para exercicíos interativos voltadas para o ensino de Fisica">
+	<meta name="author" content="Grupo iFisica.org">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<title>Faça Login</title>
 </head>
 <body>
-	<h1>Página de Login POPE</h1>
+	
 </body>
 </html>
