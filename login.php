@@ -19,7 +19,7 @@
 
 		<section class="login-form--inputs">
 
-			<span class="input-addon input-addon--username"></span><input type="text" name="username" placeholder='Login' required>
+			<span class="input-addon input-addon--username"></span><input type="text" name="username" placeholder='Login' required autofocus>
 
 			<span class="input-addon input-addon--password"></span><input type="password" placeholder='Senha' required>
 

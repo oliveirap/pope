@@ -122,7 +122,7 @@ a {
 }
 
 .login-body {
-  background: #d1f5e0;
+  background: #ecf0f1;
 }
 
 .login-form {
@@ -134,7 +134,7 @@ a {
 
 .login-form--header {
   padding: 20px;
-  background: #dde4e6;
+  background: #2c3e50;
 }
 
 .login-form--inputs {
@@ -174,7 +174,9 @@ a {
   display: block;
   width: calc(100% - 65px);
   border: 1px solid #ccc;
-  border-left: none;
+}
+.login-form--inputs input[type="text"]:focus, .login-form--inputs input[type='password']:focus {
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .input-addon {
@@ -184,6 +186,7 @@ a {
   height: 41px;
   border: 1px solid #ccc;
   border-right: none;
+  background: #ecf0f1;
   display: inline-block;
 }
 
@@ -215,5 +218,5 @@ a {
   margin: 10px;
   line-height: 50px;
   display: block;
-  letter-spacing: 5px;
+  color: white;
 }
