@@ -6,7 +6,7 @@ define('USER', 'root');
 define('PASS', '');
 define('DATABASE', 'spope');
 define('CHARSET', 'utf8');
-define('PREFIX', 'pope');
+define('PREFIX', 'pp');
 
 // urls
 define('URL_BASE', 'localhost:8080/pope/');
@@ -22,11 +22,6 @@ define('FILE_CONFIG', 'config.php');
 define('FILE_FUNCOES', 'funcoes.php');
 define('FILE_FUNC_DB', 'database.php');
 
-require 'database.php';
-
-$conn = Conectar();
-
-var_dump(Fechar($conn))
- ?>
+?>
 
  
