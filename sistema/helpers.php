@@ -56,7 +56,7 @@ function estaLogado(){
 	if(!isset($_SESSION['userLog']) || empty($_SESSION['userLog']))
 		return false;
 	else 
-		if(permanceLogado())
+		if(permaneceLogado())
 			return true;
 		else
 			acabaSessao();

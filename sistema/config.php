@@ -21,6 +21,7 @@ define('DIR_SISTEMA', DIR_BASE.'sistema/');
 define('FILE_CONFIG', 'config.php');
 define('FILE_HELPERS', DIR_SISTEMA.'helpers.php');
 define('FILE_DATABASE', DIR_SISTEMA.'database.php');
+define('FILE_VISUAIS', DIR_SISTEMA.'visuais.php');
 
 ?>
 

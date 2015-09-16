@@ -23,7 +23,12 @@ function Init(){
 	if(file_exists(FILE_DATABASE))
 		require_once(FILE_DATABASE);
 	else
-		die("ERROR: Arquivo database não existe");	
+		die("ERROR: Arquivo database não existe");
+
+	if(!file_exists(FILE_VISUAIS))
+			die('Error: Arquivo visuais.php não existe');
+		else
+			require_once FILE_VISUAIS;	
 	logout();
 }
 
@@ -63,8 +68,17 @@ function validaCadastro(){
 }
 
 function validaLogin(){
-	if(!!getPost('send')){
-			echo "Validará";
+	if(!!getPost('logar')){
+			$message = null;
+			$usuario = getPost('usuario');
+			$senha = getPost('senha');
+
+			if(!verificaLogin($usuario, $senha))
+				$message = 'Nome de usuário ou senha incorretos';
+			else
+				criaSessao($usuario, $senha);
+
+			echo ($message != null) ? $message : null;
 	}	
 }
 

@@ -1,6 +1,5 @@
 <?php 
-	require_once $_SERVER['DOCUMENT_ROOT']."/pope/sistema/sistema.php";
-	
+	require_once $_SERVER['DOCUMENT_ROOT']."/pope/sistema/sistema.php";	
 	acessoPublico();
 
  ?>
@@ -16,18 +15,19 @@
 	<title>Faça Login</title>
 </head>
 <body class="login-body flex-column--center">
+<?php validaLogin(); ?>
 	<form class="login-form" action="" name="login-form" method="POST">
 
 		<header class='login-form--header'>
 			<div class="logo"></div>
 			<h1 class='login-title'>POPE</h1>		
 		</header>
-
+		
 		<section class="login-form--inputs">
 
-			<span class="input-addon input-addon--username"></span><input type="text" name="username" placeholder='Login' required autofocus>
+			<span class="input-addon input-addon--username"></span><input type="text" name="usuario" placeholder='Login' required autofocus>
 
-			<span class="input-addon input-addon--password"></span><input type="password" placeholder='Senha' required>
+			<span class="input-addon input-addon--password"></span><input type="password" name="senha" placeholder='Senha' required>
 
 			<input type="submit" name="logar" value='Entrar'>
 

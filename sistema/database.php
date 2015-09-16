@@ -67,7 +67,7 @@ function verificaLogin($usuario, $senha){
 	$query = "SELECT * FROM pp_users  WHERE usuario = '$usuario' AND senha = '$senha'";
 	$retorno = mysqli_query($conn, $query) or die(mysqli_error($conn));
 	Fechar($conn);
-	if(mysqli_num_rows($data) >= 0){
+	if(mysqli_num_rows($retorno) > 0){
 		$data = mysqli_fetch_assoc($retorno);
 		return $data['userkey'];
 	}

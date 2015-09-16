@@ -3,6 +3,8 @@
 
 	acessoRestrito();
 	
+	//$query  = "SELECT nome IN pp_users WHERE userlog = "
+	
  ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -18,6 +20,7 @@
 <body>
 	<h1>Painel Pope</h1>
 
-	<h3>Bem, vindo Usuário!</h3>
+	<h3>Bem, vindo <?php echo retornaUsuario(); ?>!</h3>
+	<h3>Você é usuário do tipo <?php echo retornaTipo();?></h3>
 </body>
 </html>
