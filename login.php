@@ -1,3 +1,9 @@
+<?php 
+	require_once $_SERVER['DOCUMENT_ROOT']."/pope/sistema/sistema.php";
+	$conn = Conectar();
+	acessoPublico();
+
+ ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>

@@ -19,8 +19,8 @@ define('DIR_SISTEMA', DIR_BASE.'sistema/');
 
 // Arquivos
 define('FILE_CONFIG', 'config.php');
-define('FILE_FUNCOES', 'funcoes.php');
-define('FILE_FUNC_DB', 'database.php');
+define('FILE_HELPERS', DIR_SISTEMA.'helpers.php');
+define('FILE_DATABASE', DIR_SISTEMA.'database.php');
 
 ?>
 

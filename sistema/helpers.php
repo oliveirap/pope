@@ -25,15 +25,55 @@ function criptSenha($senha){
 	return hash('sha512', $senha);
 }
 
+function userLog($valor = null){
+	if($valor === null)
+		return $_SESSION['userLog'];
+	else
+		$_SESSION['userLog'] = $valor;
+}
+
 // Funções de sessão
+
+// cria sessão do usuário
+function criaSessao($usuario, $senha){
+	$key = getKey($usuario, $senha);
+	userLog($key);
+	acessoPublico();
+}
+
+// Finaliza Sessão
+function acabaSessao(){
+	Fechar();
+	unset($_SESSION['userLog']);
+	acessoRestrito();
+}
+
 
 // verifica se está logado
 function estaLogado(){
-	if(!isset($_POST['userLog']) || empty($_POST['userLog']))
-		return false
+	if(!isset($_SESSION['userLog']) || empty($_SESSION['userLog']))
+		return false;
 	else 
-		acabaSessao();
+		if(permanceLogado())
+			return true;
+		else
+			acabaSessao();
+}
 
+// Controle de acesso
+function acessoRestrito(){
+	if(!estaLogado())
+		Redirect(URL_BASE);	
+}
+
+function acessoPublico(){
+	if(estaLogado())
+		Redirect(URL_PAINEL);
+}
+
+function logout(){
+	if(isset($_GET['logout']))
+		acabaSessao();
 }
 
 ?>
