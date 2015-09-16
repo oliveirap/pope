@@ -1,6 +1,6 @@
 <?php 
 	require_once $_SERVER['DOCUMENT_ROOT']."/pope/sistema/sistema.php";
-	$conn = Conectar();
+	
 	acessoPublico();
 
  ?>

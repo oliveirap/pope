@@ -29,7 +29,36 @@ function Init(){
 
 function validaCadastro(){
 	if(!!getPost('send')){
-		echo "Validará";
+
+		$message = null;
+		$nome = getPost('nome');
+		$email = getPost('email');
+		$cemail = getPost('confirmaEmail');
+		$usuario = getPost('usuario');
+		$senha = getPost('senha');
+		$csenha = getPost('confirmaSenha');
+		$matricula = getPost('matricula');
+		
+		if($email != $cemail)
+			$message = "E-mails não são iguais";
+		else if($senha != $csenha)
+			$message = "Senhas diferentes";
+		else{
+			if(emailExiste($email, 'users'))
+				$message .= "E-mail já cadastrado. ";
+			else if(loginExiste($usuario, 'users'))
+				$message .= "Usuário já cadastrado. ";
+			else if(matriculaExiste($matricula, 'users'))
+				$message .= "matricula já cadastrada. ";
+			else{
+				if(cadastraUsuario($nome, $email, $usuario, $senha, $matricula))
+					$message = "Cadastrado com sucesso.";
+				else
+					$message = "Erro ao cadastrar.";
+			}
+		}
+
+		echo ($message != null) ? $message : null;
 	}
 }
 

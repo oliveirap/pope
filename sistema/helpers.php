@@ -1,7 +1,9 @@
 <?php 
 
 function Escapar($entrada){
+	$conn = Conectar();
 	$entrada = mysqli_real_escape_string($conn, strip_tags(trim($entrada)));
+	Fechar($conn);
 	return $entrada;
 }
 
