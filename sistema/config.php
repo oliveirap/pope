@@ -9,7 +9,7 @@ define('CHARSET', 'utf8');
 define('PREFIX', 'pp');
 
 // urls
-define('URL_BASE', 'localhost:8080/pope/');
+define('URL_BASE', 'http://localhost:8080/pope/');
 define('URL_REGISTRO', URL_BASE.'registro.php');
 define('URL_PAINEL', URL_BASE.'painel.php');
 

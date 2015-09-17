@@ -7,9 +7,9 @@ function Escapar($entrada){
 	return $entrada;
 }
 
-function Redirect($URL){
-	header("Location: ".$URL);
-	if($URL == URL_BASE) die();
+function Redirect($url){	
+	header("location:".$url);
+	echo "deveria ter redirecionado";
 }
 
 function getPost($key = null){
@@ -44,8 +44,7 @@ function criaSessao($usuario, $senha){
 }
 
 // Finaliza Sessão
-function acabaSessao(){
-	Fechar();
+function acabaSessao(){	
 	unset($_SESSION['userLog']);
 	acessoRestrito();
 }

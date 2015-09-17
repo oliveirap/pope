@@ -78,7 +78,7 @@ function verificaLogin($usuario, $senha){
 function permaneceLogado(){
 	$conn = Conectar();
 	$userkey = userLog();
-	$query = "SELECT userkey FROM pp_users WHERE userkey = '$userkey'";
+	$query = "SELECT userkey FROM pp_users WHERE userkey = '$userkey' AND status = '1'";
 	$retorno = mysqli_query($conn, $query);
 	Fechar($conn);
 	if (mysqli_num_rows($retorno) <= 0)
