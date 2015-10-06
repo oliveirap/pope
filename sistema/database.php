@@ -2,7 +2,6 @@
 
 function Conectar(){	
 	$conn = mysqli_connect(SERVER, USER, PASS, DATABASE) or die(mysqli_connect_error());
-	
 	mysqli_set_charset($conn, CHARSET) or die(mysqli_error($conn));
 	return $conn;
 }
@@ -11,6 +10,14 @@ function Fechar($conn){
 	return mysqli_close($conn) or die(mysqli_error($conn));
 }
 
+function DB_Query($table, $query){
+	$query  = Escapar($query);
+	$conn = Conectar();
+	$result = mysqli_query($conn, $query) or die (mysqli_error($conn));
+	Fechar($conn);
+	return $result;
+
+}
 function emailExiste($email, $tb){
 	$conn = Conectar();
 	$tb = PREFIX."_".$tb;

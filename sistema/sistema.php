@@ -34,7 +34,6 @@ function Init(){
 
 function validaCadastro(){
 	if(!!getPost('send')){
-
 		$message = null;
 		$nome = getPost('nome');
 		$email = getPost('email');
@@ -42,8 +41,7 @@ function validaCadastro(){
 		$usuario = getPost('usuario');
 		$senha = getPost('senha');
 		$csenha = getPost('confirmaSenha');
-		$matricula = getPost('matricula');
-		
+		$matricula = getPost('matricula');		
 		if($email != $cemail)
 			$message = "E-mails não são iguais";
 		else if($senha != $csenha)
@@ -72,12 +70,10 @@ function validaLogin(){
 			$message = null;
 			$usuario = getPost('usuario');
 			$senha = getPost('senha');
-
 			if(!verificaLogin($usuario, $senha))
-				$message = 'Nome de usuário ou senha incorretos';
+				$message = "<p class='erro-msg'>Nome de usuário ou senha incorretos.</p>";
 			else
 				criaSessao($usuario, $senha);
-
 			echo ($message != null) ? $message : null;
 	}	
 }

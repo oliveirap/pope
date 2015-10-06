@@ -1,3 +1,8 @@
+<?php 
+	require_once $_SERVER['DOCUMENT_ROOT']."/pope/sistema/sistema.php";	
+	acessoPublico();
+
+ ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
@@ -7,50 +12,37 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<title>POPE - Plataform for Online Problems and Exercices</title>
+	<title>Faça Login</title>
 </head>
-<body>
-	
-	<div class="main-wrap">
-		<nav class="nav-fix-top">
-			
-		</nav>
-		<header class="hero">
-			<h1 class="hero-title">Bem vindo ao POPE</h1>
-		</header>
-
-		<section class="index-content-wrap">
-			<div class="px1200 row">
-				
-				<div class="col-30 about-col">
-					<div class="img-about-wrap">
-						<img src="http://placehold.it/100x100">
-					</div>
-					<div class="about">
-						<p class="about-text">About Text</p>
-					</div>
-				</div>
-				<div class="col-30 about-col">
-					<div class="img-about-wrap">
-						<img src="http://placehold.it/100x100"> 						
-					</div>
-					<div class="about">
-						<p class="about-text">About Text</p>
-					</div>
-				</div>
-
-				<div class="col-30 about-col">
-					<div class="img-about-wrap">
-						<img src="http://placehold.it/100x100">
-					</div>
-					<div class="about">
-						<p class="about-text">About Text</p>
-					</div>
-				</div>
-
-			</div>
-		</section>
+<body class="login-body flex-column--center">
+	<div class="wrapper">
+		<?php validaLogin(); ?>
 	</div>
+	<form class="login-form" id="login-form" action="" name="login-form" method="POST">
 
+		<header class='login-form--header'>
+			<div class="logo"></div>
+			<h1 class='login-title'>POPE</h1>		
+		</header>
+		
+		<section class="login-form--inputs">
+
+			<span class="input-addon input-addon--username"></span><input type="text" name="usuario" id="input-usuario" placeholder='Login'   >
+
+			<span class="input-addon input-addon--password"></span><input type="password" name="senha" placeholder='Senha' id="input-senha" >
+
+			<input type="submit" name="logar" id="login-toggle" value='Entrar'>
+
+		</section>
+
+		<p class="helper">Não tem conta? <a href="registro/" title="Cadastre-se">Cadastre-se</a></p>
+
+
+	</form>	
+	<div class="disclaimer-wrap">
+		<p class="disclaimer">&copy; 2015 <a href="http://ifisica.org" target="_new" title="Equipe iFisica.org">iFisica.org</a></p>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="assets/js/custom.js"></script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+5/10 
+	- Validação JS login OK
+
+6/10
+	* Página de cadastro
+		* Validação JS cadastro
+	* Menu lateral principal	

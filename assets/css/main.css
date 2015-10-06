@@ -15,6 +15,10 @@ a {
   color: black;
 }
 
+.wrapper {
+  padding: 20px;
+}
+
 .flex-column--center {
   display: -webkit-box;
   display: -webkit-flex;
@@ -133,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 380px;
   width: 100%;
   background: white;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .login-form--header {
@@ -182,6 +186,12 @@ h1, h2, h3, h4, h5, h6 {
 .login-form--inputs input[type="text"]:focus, .login-form--inputs input[type='password']:focus {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
+.login-form--inputs input.has-error {
+  border: 1px solid #c0392b;
+}
+.login-form--inputs input.has-error:placeholder {
+  color: #c0392b;
+}
 
 .input-addon {
   margin: 0;
@@ -223,6 +233,14 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 50px;
   display: block;
   color: white;
+}
+
+.erro-msg {
+  display: inline-block;
+  background: #c0392b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 2px;
 }
 
 .register-body {

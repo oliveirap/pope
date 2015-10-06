@@ -9,7 +9,7 @@ function Escapar($entrada){
 
 function Redirect($url){	
 	header("location:".$url);
-	echo "deveria ter redirecionado";
+	die();
 }
 
 function getPost($key = null){

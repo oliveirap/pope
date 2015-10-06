@@ -11,11 +11,13 @@
 	<meta name="description" content="Plataform Online For Problems and Exercices - Plataforma online para exercicíos interativos voltadas para o ensino de Fisica">
 	<meta name="author" content="Grupo iFisica.org">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/bsheet-alpha.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<title>Cadastre-se</title>
 </head>
 <body class="register-body flex-column--center">
+	
 	<h1>Registre-se</h1>
 	<form action="" method="post" name="registro-form" class="register-form">
 	<div class="register-form--inputs">
@@ -29,5 +31,8 @@
 		<input type="submit" value="Cadastrar" name="send">
 	</div>
 	</form>	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="assets/js/custom.js"></script>
 </body>
 </html>

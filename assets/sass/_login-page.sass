@@ -6,7 +6,7 @@
 	max-width: 380px
 	width: 100%
 	background: white
-	box-shadow: 0 3px 8px rgba(black, 0.5)
+	box-shadow: 0 0px 10px rgba(black, 0.5)
 
 	
 .login-form--header
@@ -49,6 +49,11 @@
 			border: 1px solid #ccc			
 			&:focus
 				border: 1px solid rgba(black, 0.5)
+
+		&.has-error
+			border: 1px solid $vermelho
+			&:placeholder
+				color: $vermelho
 			
 
 		
@@ -93,3 +98,10 @@
 	display: block
 	color: white
 	
+.erro-msg
+	display: inline-block
+	background: $vermelho
+	color: white
+	padding: 10px 15px
+	border-radius: 2px
+
