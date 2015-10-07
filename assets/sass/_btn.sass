@@ -1,0 +1,60 @@
+$clay: #22313F
+$laranja: #d35400
+
+
+.btn
+	transition: all 100ms ease-out
+	display: inline-block	
+	padding: 7px 20px
+	border: none
+	background: white
+	border-radius: 1px
+	margin: 5px 0
+	outline: none
+	font-family: 'Roboto', sans-serif
+	cursor: pointer
+	font-size: 16px
+	font-weight: 700
+	color: rgba(black, 0.7)
+	//text-transform: uppercase
+	//border: 1px solid darken(white, 20%)
+	&:hover
+		//border: 1px solid darken(white, 50%)
+		background: darken(white, 3%)
+	&:active
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7)
+		background: darken(white, 8%)
+		outline: none
+
+.btn-padrao
+	&:hover
+		//border: 1px solid darken(white, 50%)
+.btn-verde
+	//border: 1px solid rgba(darken($verde, 20%), .5)
+	//border: 1px solid rgba(black, 0.5)
+	color: white
+	background: $verde
+	&:hover
+		background: darken($verde, 2%)
+	&:active
+		//background: darken($verde, 7%)
+
+.btn-vermelho
+	//border: 1px solid rgba(darken($vermelho, 20%), .5)
+	//border: 1px solid rgba(black, 0.5)
+	color: white
+	background: lighten($vermelho, 5%)
+	&:hover
+		background: lighten($vermelho, 1%)
+	&:active
+		//background: darken($vermelho, 3%)
+
+.btn-laranja
+	//border: 1px solid rgba(darken($laranja, 20%), .5)
+	//border: 1px solid rgba(black, 0.5)
+	color: white
+	background: lighten($laranja, 10%)
+	&:hover
+		background: lighten($laranja, 5%)
+	&:active
+		//background: lighten($laranja, 2%)
