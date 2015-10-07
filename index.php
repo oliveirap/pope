@@ -14,7 +14,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<title>Faça Login</title>
 </head>
-<body class="login-body flex-column--center">
+<body>
+<div class="login-body flex-column--center">
+
 	<div class="wrapper">
 		<?php validaLogin(); ?>
 	</div>
@@ -44,5 +46,7 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="assets/js/custom.js"></script>
+
+	</div>
 </body>
 </html>

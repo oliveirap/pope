@@ -2,6 +2,15 @@
 	- Validação JS login OK
 
 6/10
-	* Página de cadastro
-		* Validação JS cadastro
-	* Menu lateral principal	
+	* Página de cadastro +-
+		 Validação JS
+		 - AJAX Username, Email, Matricula check
+	
+
+
+
+
+
+// Página de Cadastro
+	- Login via Facebook
+	- Grupos (Possível para vários grupos por usuário)
