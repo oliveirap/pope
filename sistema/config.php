@@ -10,8 +10,13 @@ define('PREFIX', 'pp');
 
 // urls
 define('URL_BASE', 'http://localhost:8080/pope/');
-define('URL_REGISTRO', URL_BASE.'registro.php');
+define('URL_REGISTRO', URL_BASE.'registro/');
 define('URL_PAINEL', URL_BASE.'painel.php');
+define('URL_CHECK_MAIL', URL_BASE.'assets/modulos/checkmail.php');
+define('URL_CHECK_USUARIO', URL_BASE.'assets/modulos/checkusuario.php');
+define('URL_CHECK_MATR', URL_BASE.'assets/modulos/checkmatr.php');
+define('URL_CSS', URL_BASE.'assets/css/main.css');
+define('URL_JS', URL_BASE.'assets/js/custom.js');
 
 // dirs
 define('DIR_BASE', $_SERVER['DOCUMENT_ROOT'].'/pope/');
