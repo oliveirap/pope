@@ -10,8 +10,7 @@ function Fechar($conn){
 	return mysqli_close($conn) or die(mysqli_error($conn));
 }
 
-function DB_Query($table, $query){
-	$query  = Escapar($query);
+function DB_Query($query){
 	$conn = Conectar();
 	$result = mysqli_query($conn, $query) or die (mysqli_error($conn));
 	Fechar($conn);
@@ -71,7 +70,7 @@ function getKey($usuario, $senha){
 function verificaLogin($usuario, $senha){
 	$conn = Conectar();
 	$senha = criptSenha($senha);
-	$query = "SELECT * FROM pp_users  WHERE usuario = '$usuario' AND senha = '$senha'";
+	$query = "SELECT * FROM " .PREFIX."_users  WHERE usuario = '$usuario' AND senha = '$senha'";
 	$retorno = mysqli_query($conn, $query) or die(mysqli_error($conn));
 	Fechar($conn);
 	if(mysqli_num_rows($retorno) > 0){

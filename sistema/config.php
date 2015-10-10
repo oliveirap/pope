@@ -8,15 +8,14 @@ define('DATABASE', 'spope');
 define('CHARSET', 'utf8');
 define('PREFIX', 'pp');
 
-// urls
+// url
 define('URL_BASE', 'http://localhost:8080/pope/');
 define('URL_REGISTRO', URL_BASE.'registro/');
 define('URL_PAINEL', URL_BASE.'painel.php');
-define('URL_CHECK_MAIL', URL_BASE.'assets/modulos/checkmail.php');
-define('URL_CHECK_USUARIO', URL_BASE.'assets/modulos/checkusuario.php');
-define('URL_CHECK_MATR', URL_BASE.'assets/modulos/checkmatr.php');
+define('URL_CHECK_DISP', URL_BASE.'assets/modulos/register_check_disp.php');
 define('URL_CSS', URL_BASE.'assets/css/main.css');
 define('URL_JS', URL_BASE.'assets/js/custom.js');
+define('URL_FONT', URL_BASE.'assets/css/font-awesome.min.css');
 
 // dirs
 define('DIR_BASE', $_SERVER['DOCUMENT_ROOT'].'/pope/');
@@ -27,7 +26,8 @@ define('FILE_CONFIG', 'config.php');
 define('FILE_HELPERS', DIR_SISTEMA.'helpers.php');
 define('FILE_DATABASE', DIR_SISTEMA.'database.php');
 define('FILE_VISUAIS', DIR_SISTEMA.'visuais.php');
-
+define('FILE_MCONFIG', DIR_BASE.'assets/parciais/mconfig.php');
+define('FILE_HEAD', DIR_BASE.'assets/parciais/head.php');
 ?>
 
  

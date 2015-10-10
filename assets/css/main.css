@@ -4,7 +4,6 @@
 }
 
 body {
-  height: 100vh;
   background: #ecf0f1;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -39,12 +38,6 @@ a {
   clear: both;
 }
 
-.error {
-  display: block;
-  color: #c0392b;
-  font-weight: 700;
-}
-
 .flex-column--center {
   display: -webkit-box;
   display: -webkit-flex;
@@ -70,11 +63,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disclaimer {
-  font-size: 12px;
-  color: black;
+  font-size: 15px;
+  font-weight: 400;
+  color: white;
 }
 .disclaimer a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -204,10 +198,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #ec5e00;
 }
 
-.login-body {
-  background: #ecf0f1;
-}
-
 .login-form {
   max-width: 380px;
   width: 100%;
@@ -310,17 +300,9 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-.erro-msg {
-  display: inline-block;
-  background: #c0392b;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 2px;
-}
-
 .formulario-cadastro {
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   max-width: 400px;
   margin: 20px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -379,12 +361,16 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid rgba(34, 49, 63, 0.5);
   border-radius: 2px;
   width: 150px;
-  margin: 5px 0px 7px;
-  display: block;
+  margin: 5px 10px 7px 0;
+  display: inline-block;
 }
 .input-ticket:focus {
   color: #d35400;
   border: 2px solid #d35400;
+}
+
+.label-ticket {
+  display: block;
 }
 
 .input-submit {
@@ -412,4 +398,51 @@ h1, h2, h3, h4, h5, h6 {
   background: #d35400;
   color: white;
   padding: 5px 15px;
+}
+
+.erro-msg {
+  display: inline-block;
+  background: #c0392b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 2px;
+}
+
+.error {
+  display: block;
+  color: #c0392b;
+  font-weight: 400;
+  text-align: right;
+}
+
+.success {
+  display: block;
+  color: #25a25a;
+  font-weight: 400;
+  text-align: right;
+}
+
+.inline {
+  display: inline-block !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.msg {
+  margin: 10px auto;
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 2px;
+  text-align: left;
+}
+.msg-error {
+  background: #c0392b;
+}
+.msg-error--outlined {
+  background: transparent;
+  color: #c0392b;
+  border: 1px solid #c0392b;
 }

@@ -1,0 +1,38 @@
+.erro-msg
+	display: inline-block
+	background: $vermelho
+	color: white
+	padding: 10px 15px
+	border-radius: 2px
+
+.error
+	display: block
+	color: $vermelho
+	font-weight: 400
+	text-align: right
+
+.success
+	display: block
+	color: darken($verde, 10%)
+	font-weight: 400
+	text-align: right
+
+.inline
+	display: inline-block !important
+
+.block
+	display: block !important
+
+.msg
+	margin: 10px auto
+	display: block
+	padding: 10px 15px
+	color: white
+	border-radius: 2px
+	text-align: left
+	&-error
+		background: $vermelho
+		&--outlined
+			background: transparent
+			color: $vermelho
+			border: 1px solid $vermelho

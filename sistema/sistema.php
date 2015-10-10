@@ -33,35 +33,60 @@ function Init(){
 }
 
 function validaCadastro(){
-	if(!!getPost('send')){
-		$message = null;
+	if(!!getPost('submit') && file_exists(FILE_MCONFIG)){
+		require_once(FILE_MCONFIG);
+
+		// Mensagem de erro
+		$mensagem = array(
+				"inputNome" => array(
+					"msg"		=> null,
+					"existe"	=> false 
+				),
+
+				"inputEmail" => array(
+					"msg"		=> null,
+					"existe"	=> false
+				),
+
+				"inputMatr" => array(
+					"msg"		=> null,
+					"existe"	=> false
+				),
+
+				"inputUsuario" => array(
+					"msg"		=> null,
+					"existe"	=> false
+				),
+
+				"inputSenha" => array(
+					"msg"		=> null,
+					"existe"	=> false
+				),
+
+				"inputTicket" => array(
+					"msg"		=> null,
+					"existe"	=> false
+				),
+			)
+
+		// Recupera informações do POST
+		
+		// Infos Pessoais
 		$nome = getPost('nome');
-		$email = getPost('email');
-		$cemail = getPost('confirmaEmail');
+		$email = getPost('mail');
+		$cemail = getPost('cmail');
+		$matr = getPost('matricula');
+
+		// Infos da conta
 		$usuario = getPost('usuario');
 		$senha = getPost('senha');
-		$csenha = getPost('confirmaSenha');
-		$matricula = getPost('matricula');		
-		if($email != $cemail)
-			$message = "E-mails não são iguais";
-		else if($senha != $csenha)
-			$message = "Senhas diferentes";
-		else{
-			if(emailExiste($email, 'users'))
-				$message .= "E-mail já cadastrado. ";
-			else if(loginExiste($usuario, 'users'))
-				$message .= "Usuário já cadastrado. ";
-			else if(matriculaExiste($matricula, 'users'))
-				$message .= "matricula já cadastrada. ";
-			else{
-				if(cadastraUsuario($nome, $email, $usuario, $senha, $matricula))
-					$message = "Cadastrado com sucesso.";
-				else
-					$message = "Erro ao cadastrar.";
-			}
-		}
+		$csenha = getPost('csenha');
+		$ticket = getPost('ticket');
 
-		echo ($message != null) ? $message : null;
+		//Teste de REGEX
+		if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
+
+
 	}
 }
 

@@ -4,12 +4,7 @@
 6/10
 	* Página de cadastro +-
 		 Validação JS
-		 - AJAX Username, Email, Matricula check
-	
-
-
-
-
+		 	- Jquery OK
 
 // Página de Cadastro
 	- Login via Facebook

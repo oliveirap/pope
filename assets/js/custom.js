@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+//Variaveis para post
+	var register_check_page = "http://localhost:8080/pope/assets/modulos/register_check_disp.php";
+
 //Login
 	// Válida usuário no login
 	$("#input-usuario").on("blur", function(){
@@ -43,6 +46,22 @@ $(document).ready(function(){
 		
 	});
 
+// CADASTRO
+	// array de erros no formulário.
+	var register_erros = {
+		nome		: true,
+		email 		: true,
+		Matricula 	: true,
+		usuario 	: true,
+		senha 		: true,
+		ticket 		: true
+	};
+
+	// Registra erros no array
+	function errosRegisterForm(key, valor){
+		register_erros[key] = valor;
+	}
+
 	//Muda cor da label no form de cadastro
 	function addError(obj){
 		$obj = obj;
@@ -50,6 +69,7 @@ $(document).ready(function(){
 			$obj.removeClass("input-ok");		
 		$obj.addClass("input-error");
 	}
+
 
 	function addErrorTicket(obj){
 		$obj = obj;
@@ -60,9 +80,8 @@ $(document).ready(function(){
 
 	function removeError(obj){
 		$obj = obj;
-		$span = $obj.parent().children(".error");
+		$span = $obj.parent().children("span");
 		$span.html("");
-		$obj = obj;
 		if($obj.hasClass("input-error"))
 			$obj.removeClass("input-error");
 		$obj.addClass("input-ok")
@@ -70,26 +89,24 @@ $(document).ready(function(){
 
 	function removeErrorTicket(obj){
 		$obj = obj;
-		$span = $obj.parent().children(".error");
-		$span.html("");
-		$obj = obj;
 		if($obj.hasClass("input-error--ticket"))
 			$obj.removeClass("input-error--ticket");
 		$obj.addClass("input-ok--ticket")
 	}
-		// TESTE DE REGEX
+
+	// TESTE DE REGEX
 	function validarEmail(email){
 		var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		return emailRegex.test(email);	
 	}
 
 	function validarUser(user){
-		var regex = /^[a-z0-9_-]{3,16}$/;
+		var regex = /^[a-zA-Z0-9_@%$#&!.-]{3,16}$/;
 		return regex.test(user);
 	}
 
 	function validaPass(pass){
-		var regex = /^[a-z0-9_-]{6,18}$/;
+		var regex = /^[a-z0-9A-Z_@%$#&!.-]{6,}$/;
 		return regex.test(pass);
 	}
 
@@ -116,92 +133,178 @@ $(document).ready(function(){
 		if($this.val().length < 11){
 			$span.html("Deve conter no mínimo 11 carácteres.")
 			addError($this);
-			//$this.removeClass("input-ok");
-			//$this.addClass("input-error");
+			errosRegisterForm("email", true);
 		}
 		else {			
 			removeError($this);
+			errosRegisterForm("email", false);
 		}
 	});
 
-
+	// Validação client de email
 	$("#mail").on("blur", function(){
-		$this = $(this);
-		$span = $this.parent().children(".error");
-		
-		if(validarEmail($this.val())){
-			removeError($this);
+		$mailcamp = $(this);		
+		$mail = $this.val();
+		$span = $this.parent().children(".error");		
+		if(validarEmail($mail)){ // Se estiver no formato certo
+			$.post(register_check_page, {mail: $mail}, function(data){ // Checa disponibilidade
+				data = jQuery.parseJSON(data);
+				if(data["disponivel"]){
+					removeError($mailcamp);
+					$span.html("");					
+					errosRegisterForm("email", false);
+				}
+				else{
+					addError($mailcamp); // Não disponivel
+					$span.removeClass("success").addClass("error").html("E-mail indisponível.");
+					errosRegisterForm("email", true);
+				}				
+				
+			});
 		}
-		else{
-			addError($this);
-			$span.html("Por favor, insira o endereço de e-mail válido.");
+		else{ // Erro de formato
+			addError($mailcamp );
+			$span.removeClass("success").addClass("error").html("Endereço inválido.");
+			errosRegisterForm("email", true);
 		}
 	});
 
+	//Validação client de e-mails iguais
 	$("#cmail").on("blur", function(){
 		$this = $(this);
 		$span = $this.parent().children(".error");
-		if(validarEmail($this.val()) && $this.val() == $("#mail").val())
+		if(validarEmail($this.val()) && $this.val() == $("#mail").val()){
 			removeError($this);
+			errosRegisterForm("email", false);
+		}
 		else{
 			addError($this);
 			$span.html("Os e-mails digitados devem ser iguais.");
+			errosRegisterForm("email", true);
 		}
 	});
 
+	// Validação client matricula
 	$("#matr").on("blur", function(){
-		$this = $(this);
-		$span = $this.parent().children(".error");
-		if($this.val() != "")
-			removeError($this);
+		$campomatricula = $(this);
+		$matricula = $campomatricula.val();
+		$span = $this.parent().children("span");
+		if($matricula != ""){ // Se estiver no formato correto
+			$.post(register_check_page, {matricula: $matricula}, function(data){ // Checa disponibilidade
+				data = jQuery.parseJSON(data);
+				if(data["disponivel"]){
+					removeError($campomatricula);
+					$span.html("");
+					errosRegisterForm("matricula", false);
+				}
+				else if(!data["disponivel"]){
+					addError($campomatricula);
+					$span.removeClass("success").addClass("error").html("Matricula já cadastrada.");	
+					errosRegisterForm("matricula", true);
+				}
+			});
+		}
 		else{
-			$span.html("Por favor, insira seu código de matrícula.");
-			addError($this);
+			$span.removeClass("success").addClass("error").html("Por favor, insira seu código de matrícula.");
+			addError($campomatricula);
+			errosRegisterForm("matricula", true);
 		}
 	});
 
+	// Validação de formato de usuario
 	$("#usuario").on("blur", function(){
-		$this = $(this);
-		$span = $this.parent().children(".error");
-		if(validarUser($this.val()))
-			removeError($this);
-		else{
-			addError($this);
-			$span.html("O nome de usuário deve ter entre 3 e 16 carácteres, sem carácteres especiais.");
+		$usercamp = $(this);
+		$user = $usercamp.val();
+		$span = $usercamp.parent().children(".error");
+		if(validarUser($user)){ // No formato
+			$.post(register_check_page, {usuario: $user}, function(data){ //Verifica a disponibilidade
+				data = jQuery.parseJSON(data);
+				if(data["disponivel"]){
+					removeError($usercamp);
+					$span.html("");
+					errosRegisterForm("usuario", false);
+				}
+				else{ // Não disponivel
+					$span.removeClass("success").addClass("error").html("Usuário indisponível.");
+					addError($usercamp);
+					errosRegisterForm("usuario", true);
+				}
+			})
+		}
+		else{ // Erro de formato
+			addError($usercamp);
+			$span.html("O nome de usuário deve ter entre 3 e 16 carácteres.");
+			errosRegisterForm("usuario", true);
 		}
 	});
 
+	// Validação de formato da senha
 	$("#senha").on("blur", function(){
 		$this = $(this);
 		$span = $this.parent().children(".error");
-		if(validaPass($this.val()))
+		if(validaPass($this.val())){
 			removeError($this);
+			errosRegisterForm("senha", false);
+		}
 		else{
 			addError($this);
-			$span.html("A senha deve conter de 6 a 18 carácteres, sem carácteres especiais.");
+			$span.html("A senha deve conter no mínimo 6 carácteres.");
+			errosRegisterForm("senha", true);
 		}
 	});
 
+	// Validação client de senhas iguais
 	$("#csenha").on("blur", function(){
 		$this = $(this);
 		$span = $this.parent().children(".error");
-		if($this.val() == $("#senha").val() && validaPass($this.val()))
+		if($this.val() == $("#senha").val() && validaPass($this.val())){
 			removeError($this);
+			errosRegisterForm("senha", false);
+		}
 		else{
 			addError($this);
 			$span.html("Senhas não coincidem.");
+			errosRegisterForm("senha", true);
 		}
 	});
 
+	// Válidação client ticket
 	$("#ticket").on("blur", function(){
-		$this = $(this);
-		$span = $this.parent().children(".error");
-		if(validaTicket($this.val()))
-			removeErrorTicket($this);
-		else{
-			addErrorTicket($this);
-			$span.html("Um ticket deve ter 6 carácteres, entre letras e números.")
+		$ticket = $(this); 
+		$span = $ticket.parent().children("span");
+		if(validaTicket($ticket.val())){ //Se estiver no formato certo
+			$.post(register_check_page, {ticket: $ticket.val()}, function(json){ //Manda um post para o php
+				json = jQuery.parseJSON(json);
+				if(json['disponivel']){ // Que retorna a disponibilidade
+					removeErrorTicket($ticket);	
+					$span.removeClass("error").addClass("success").html("<i class='fa fa-check fa-lg'></i>");					
+					errosRegisterForm("ticket", false);
+				}
+				else{
+					addErrorTicket($ticket); //Não disponível
+					$span.removeClass("success").addClass("error").html("<i class='fa fa-times fa-lg'></i>");
+					errosRegisterForm("ticket", true);
+				}
+			});	
 		}
+		else{
+			addErrorTicket($ticket); // Erro de formato
+			$span.removeClass("success").addClass("error").html("<i class='fa fa-times fa-lg'></i>")
+			errosRegisterForm("ticket", true);
+		}
+	});
+
+	// Validação de campos ao submeter
+	$("#register-submit").on("click", function(event){
+		$this = $(this);
+		$.each(register_erros, function(chave, valor){
+			if(register_erros[chave]){
+				alert("Por favor, preencha todos os campos corretamente.");
+				event.preventDefault();
+			}
+			else
+				return true;	
+		});
 	});
 
 });
