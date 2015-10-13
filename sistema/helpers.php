@@ -35,7 +35,6 @@ function userLog($valor = null){
 }
 
 // Funções de sessão
-
 // cria sessão do usuário
 function criaSessao($usuario, $senha){
 	$key = getKey($usuario, $senha);
@@ -48,8 +47,6 @@ function acabaSessao(){
 	unset($_SESSION['userLog']);
 	acessoRestrito();
 }
-
-
 // verifica se está logado
 function estaLogado(){
 	if(!isset($_SESSION['userLog']) || empty($_SESSION['userLog']))

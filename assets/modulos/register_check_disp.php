@@ -1,21 +1,5 @@
 <?php 
 	require_once 'mconfig.php';	
-	function ticketDisp($ticket, $tb){
-		$ticket = Escapar($ticket);
-		$conn = Conectar();
-		$tb = PREFIX."_".$tb;
-		$query = "SELECT cod, lim, reg FROM $tb WHERE cod = '$ticket'";
-		$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-		if(mysqli_num_rows($result) > 0){
-			$data = mysqli_fetch_assoc($result);
-			if($data['reg'] < $data['lim'])
-				return true;
-			else
-				return false;
-		}
-		else
-			return false;
-	}
 	if(isset($_POST['mail'])){
 		$mail = $_POST['mail'];
 		$mail = Escapar($mail);

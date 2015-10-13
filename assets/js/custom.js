@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 //Variaveis para post
 	var register_check_page = "http://localhost:8080/pope/assets/modulos/register_check_disp.php";
-
 //Login
 	// Válida usuário no login
 	$("#input-usuario").on("blur", function(){
@@ -14,7 +13,6 @@ $(document).ready(function(){
 				$(this).removeClass("has-error");
 		}
 	});
-
 	// Válida senha no login
 	$("#input-senha").on("blur", function(){
 		if($(this).val() == ""){ 
@@ -51,7 +49,7 @@ $(document).ready(function(){
 	var register_erros = {
 		nome		: true,
 		email 		: true,
-		Matricula 	: true,
+		matricula 	: true,
 		usuario 	: true,
 		senha 		: true,
 		ticket 		: true
@@ -69,7 +67,6 @@ $(document).ready(function(){
 			$obj.removeClass("input-ok");		
 		$obj.addClass("input-error");
 	}
-
 
 	function addErrorTicket(obj){
 		$obj = obj;
@@ -96,12 +93,12 @@ $(document).ready(function(){
 
 	// TESTE DE REGEX
 	function validarEmail(email){
-		var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 		return emailRegex.test(email);	
 	}
 
 	function validarUser(user){
-		var regex = /^[a-zA-Z0-9_@%$#&!.-]{3,16}$/;
+		var regex = /^[a-zA-Z0-9_@%#$&!.-]{3,16}$/;
 		return regex.test(user);
 	}
 
@@ -114,6 +111,14 @@ $(document).ready(function(){
 		var regex = /^[a-z0-9A-Z]{6}$/;
 		return regex.test(ticket);
 	}
+	function validaNome(nome){
+		var regex = /^[a-zA-Z0-9]{11,}$/;
+		return regex.test(nome);
+	}
+	function validaMatr(matr){
+		var regex = /^[0-9]{14}$/;
+		return regex.test(matr);
+	}
 
 	$(".input-cadastro").on("focus", function(){
 		$this = $(this);	
@@ -125,19 +130,18 @@ $(document).ready(function(){
 		$this.parent().removeClass("input-ativo");
 	});
 
-
 	//Funções para verificar inputs form de cadastro
 	$("#nome").on("blur", function(){
 		$this = $(this);
 		$span = $this.parent().children(".error");
-		if($this.val().length < 11){
+		if(validaNome($this.val())){
 			$span.html("Deve conter no mínimo 11 carácteres.")
 			addError($this);
-			errosRegisterForm("email", true);
+			errosRegisterForm("nome", true);
 		}
 		else {			
 			removeError($this);
-			errosRegisterForm("email", false);
+			errosRegisterForm("nome", false);
 		}
 	});
 
@@ -148,6 +152,7 @@ $(document).ready(function(){
 		$span = $this.parent().children(".error");		
 		if(validarEmail($mail)){ // Se estiver no formato certo
 			$.post(register_check_page, {mail: $mail}, function(data){ // Checa disponibilidade
+				console.log(data);
 				data = jQuery.parseJSON(data);
 				if(data["disponivel"]){
 					removeError($mailcamp);
@@ -163,7 +168,7 @@ $(document).ready(function(){
 			});
 		}
 		else{ // Erro de formato
-			addError($mailcamp );
+			addError($mailcamp);
 			$span.removeClass("success").addClass("error").html("Endereço inválido.");
 			errosRegisterForm("email", true);
 		}
@@ -189,7 +194,7 @@ $(document).ready(function(){
 		$campomatricula = $(this);
 		$matricula = $campomatricula.val();
 		$span = $this.parent().children("span");
-		if($matricula != ""){ // Se estiver no formato correto
+		if(validaMatr($matricula)){ // Se estiver no formato correto
 			$.post(register_check_page, {matricula: $matricula}, function(data){ // Checa disponibilidade
 				data = jQuery.parseJSON(data);
 				if(data["disponivel"]){
@@ -297,9 +302,11 @@ $(document).ready(function(){
 	// Validação de campos ao submeter
 	$("#register-submit").on("click", function(event){
 		$this = $(this);
+		console.log(register_erros);
 		$.each(register_erros, function(chave, valor){
 			if(register_erros[chave]){
-				alert("Por favor, preencha todos os campos corretamente.");
+				console.log(register_erros[chave]);
+				//alert("Por favor, preencha todos os campos corretamente.");
 				event.preventDefault();
 			}
 			else

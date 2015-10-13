@@ -26,8 +26,8 @@
 			<label class="label-registro">Senha<input type="password" id="senha" name="senha" class="input-cadastro"><span class="error"></span></label>
 			<label class="label-registro">Confirme sua senha<input type="password" id="csenha" name="csenha" class="input-cadastro"><span class="error"></span></label>
 			<label class="label-registro label-ticket clearfix"><p class="block">Ticket de cadastro</p><input type="text" id="ticket" name="ticket" class="input-cadastro input-ticket"><span class="error inline"></span></label>
-			<div class="msg msg-error">Mensagem de erros</div>
-			<input type="submit" id="register-submit" class="input-submit btn btn-verde" name="submit" value="Cadastrar">
+			<?php echo $erros ?>
+			<input type="submit" id="register-submit" class="input-submit btn azul" name="submit" value="Cadastrar">
 		</div>
 	</form>
 

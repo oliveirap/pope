@@ -5,7 +5,8 @@
 	* Página de cadastro +-
 		 Validação JS
 		 	- Jquery OK
-
+12/10
+	- Sistema de cadastro pronto
 // Página de Cadastro
 	- Login via Facebook
 	- Grupos (Possível para vários grupos por usuário)

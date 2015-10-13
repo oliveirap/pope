@@ -1,5 +1,4 @@
 <?php 
-
 function retornaDados(){
 	$conn = Conectar();
 	$userkey = userLog();
@@ -11,8 +10,8 @@ function retornaDados(){
 		$data = mysqli_fetch_assoc($retorno);		
 		return $data;
 	}
-
-	else return null;
+	else
+		return null;
 }
 
 function retornaUsuario(){
@@ -23,9 +22,7 @@ function retornaUsuario(){
 function retornaTipo(){
 	$data = retornaDados();
 	$tipo = $data['tipo'];	
-	if($tipo == "1") return "Aluno";
-	else if ($tipo == "2") return "Professor";
-	else if ($tipo == "3") return "Admin";
+	return $tipo;
 }
 
  ?>
