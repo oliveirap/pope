@@ -33,7 +33,18 @@ function userLog($valor = null){
 	else
 		$_SESSION['userLog'] = $valor;
 }
-
+function isAdmin(){
+	$key = userLog();
+	if($key != null){
+		$conn = Conectar();
+		$query = "SELECT tipo FROM pp_users WHERE userkey = '$key' AND tipo = 3 LIMIT 1";
+		$retorno = mysqli_query($conn, $query) or die("Error: " . mysqli_error($conn));
+		if(mysqli_num_rows($retorno) > 0)
+			return true;
+		else
+			return false;
+	}
+}
 // Funções de sessão
 // cria sessão do usuário
 function criaSessao($usuario, $senha){

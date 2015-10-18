@@ -302,7 +302,6 @@ $(document).ready(function(){
 	// Validação de campos ao submeter
 	$("#register-submit").on("click", function(event){
 		$this = $(this);
-		console.log(register_erros);
 		$.each(register_erros, function(chave, valor){
 			if(register_erros[chave]){
 				console.log(register_erros[chave]);
@@ -314,4 +313,22 @@ $(document).ready(function(){
 		});
 	});
 
+// PAINEL
+	// Lista do menu lateral
+	$(".drop-toggle>a").on("click", function(event){
+		$this = $(this).parent();
+		$this.toggleClass("aberto");
+		$indicador = $this.find(".indicador");
+		$indicador.toggleClass("rodar");
+		event.preventDefault();
+	});
+	$(".add-spinner").hover(function(){
+		$this = $(this);
+		var i = $this.find("i");
+		i.toggleClass("fa-spin");
+	}, function(){
+		$this = $(this);
+		var i = $this.find("i");
+		i.toggleClass("fa-spin");
+	});
 });

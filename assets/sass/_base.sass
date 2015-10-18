@@ -1,12 +1,19 @@
 // Variavéis
 $gelo: #ecf0f1
+$amarelo: #f0ad4e
 $verde: #2ecc71
 $vermelho: #c0392b
 $cinza-escuro: #1d1d1f
 $cinza: #bdc3c7
 $azul: #3498db
 $azulesc: #2980b9
+// Tema POPE
+$corprimaria: #293B3F
+$corsecundaria: #2980b9
+$corterciaria: #3498db
+$quartacor: darken($azulesc, 10%)  
 //
+
 *
 	margin: 0
 	padding: 0
@@ -20,14 +27,11 @@ a
 	color: black
 .wrapper
 	padding: 20px
-.container
-	width: 100%
-	max-width: 1200px
-.container-fluid
-	width: 100%
 .wrapper-form
 	padding: 10px 15px
 	position: relative
+.corpo-interno
+	padding-top: 10px
 ._100vh
 	min-height: 100vh
 .bg
@@ -36,4 +40,19 @@ a
 	content: ""
 	display: table
 	clear: both
+//retira padding right and left
+.row-sp
+	padding-bottom: 0 !important
+	[class*="col-"]
+		padding-left: 0 !important
+		padding-right: 0 !important
+.text-center
+	display: block
+	text-align: center
 
+p
+	padding: 10px 5px 0
+
+.link, .link:focus, .link:active, .link:hover
+	text-decoration: none
+	color: white

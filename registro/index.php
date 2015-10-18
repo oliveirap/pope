@@ -5,10 +5,17 @@
  ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
-<?php 
-	$titulo = "Registre-se";	
-	include(FILE_HEAD); 
-?>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<meta name="description" content="Plataform Online For Problems and Exercices - Plataforma online para exercicíos interativos voltadas para o ensino de Fisica">
+	<meta name="author" content="Grupo iFisica.org">
+	<link rel="stylesheet" href="<?php echo URL_CSS ?>">
+	<link rel="stylesheet" href="<?php echo URL_FONT ?>">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+	<title>Registre-se</title>
+</head>
 <body class="_100vh bg">
 	
 	<form id="form-cadastro" method="POST" class="formulario-cadastro" action="<?php echo $_SERVER['PHP_SELF']  ?>">

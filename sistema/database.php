@@ -1,5 +1,4 @@
 <?php 
-
 function Conectar(){	
 	$conn = mysqli_connect(SERVER, USER, PASS, DATABASE) or die(mysqli_connect_error());
 	mysqli_set_charset($conn, CHARSET) or die(mysqli_error($conn));
@@ -41,7 +40,7 @@ function loginExiste($login, $tb){
 }
 function matriculaExiste($matricula, $tb){
 	$conn = Conectar();
-	$tb = PREFIX."_".$tb;
+ 	$tb = PREFIX."_".$tb;
 	$query = "SELECT matricula FROM $tb WHERE matricula = '$matricula'";
 	$retorno = mysqli_query($conn, $query) or die(mysqli_error($conn));
 	//var_dump($retorno);
@@ -67,7 +66,7 @@ function ticketDisp($ticket, $tb){
 		else
 			return false;
 }
-function cadastraUsuario($nome, $email, $usuario, $senha, $matricula, $ticket, $status = 1, $tipo = 1 ){
+function cadastraUsuario($nome, $email, $usuario, $senha, $matricula, $ticket, $status = 1, $tipo = 1){
 	$userkey = gerarKey();	
 	$conn = Conectar();	
 	$senha = criptSenha($senha);	
@@ -82,6 +81,7 @@ function cadastraUsuario($nome, $email, $usuario, $senha, $matricula, $ticket, $
 
 function cadastraTicket($ticket, $lim = 0){
 	$lim =  Escapar($lim);
+	$ticket = Escapar($ticket);
 	$conn = Conectar();
 	// Verifica se é para cadastrar usuario no ticket ou o proprio ticket
 	// Se for para cadastrar o usuario, faz update na parada.
@@ -141,8 +141,4 @@ function permaneceLogado(){
 	else
 		return true;
 }
-
-
-
-
  ?>

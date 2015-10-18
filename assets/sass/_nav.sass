@@ -1,13 +1,29 @@
 .nav
-	padding: 10px
-	display: block	
-	&.principal
-		color: white
-		background: $cinza-escuro
-	&.topo
-		line-height: 30px
-		width: 100%
-		height: 30px
+	&.fixo-topo
+		z-index: 99
+		background: white
 		position: fixed
-		top: 0
+		background: $corprimaria
 		left: 0
+		top: 0
+		height: 50px
+		line-height: 50px
+		width: 100%
+		border-bottom: 2px solid $azul
+	&.principal
+		font-size: 15px
+		color: rgba(white, 0.9)
+	&.lateral
+		background: $corprimaria
+		//padding: 10px 0
+		position: relative
+		min-height: 100vh
+	.nav-logo
+		text-align: center
+		display: inline-block
+		padding: 0 10px
+	.nav-content
+		display: block
+
+.nav-hero
+	padding: 20px
